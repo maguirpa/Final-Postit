@@ -1,3 +1,10 @@
+<div class = 'pull-right'>
+  <%= link_to '[edit this post]', edit_post_path(@post) %>
+</div>
+
+<%= render 'shared/categories_badge', post: @post %>  
+
 <%= render 'shared/page_header', title: @post.title %>
 <%= @post.description %>
 <hr/>
+<%= link_to 'Back', posts_path %>
