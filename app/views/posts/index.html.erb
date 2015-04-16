@@ -1,3 +1,24 @@
-<h3>Welcome!</h3>
+<%= render 'shared/page_header', title: 'All Posts' %>
 
-<p>This is Postit.  Going to go through the whole first two weeks here and try to reproduce as much of it as possible.</p>
+<% @posts.each do |post| %>
+  <div class='well'>
+    <div class= 'pull-right'>
+      <%= link_to '[edit]', edit_post_path(post) %>
+    </div>
+    <%= render '/shared/categories_badge', post: post %>
+    </br>
+    <h5>
+      <%= link_to post.title, post_path(post) %>
+    </h5>
+    <p>
+      <%= post.description %>
+    </p>
+    By <span class='quiet'><%= post.creator.username %></span> at <%= post.created_at %>
+    </br>
+    <h5>
+      <small>
+        <%= link_to "#{post.comments.size} comments", post_path(post) %>
+      </small>
+    </h5>
+  </div>
+<% end %>
