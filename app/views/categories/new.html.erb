@@ -1,0 +1,12 @@
+<%= render 'shared/page_header', title: 'Create a Category' %>
+
+<%= render 'shared/error_display', obj: @category %>
+
+<div class = 'well'>
+  <%= form_for @category do |f| %>
+    <%= f.label 'Name' %>
+    <%= f.text_field :name, class: 'span5' %>
+      </br>
+    <%= f.submit 'Create Category', class: 'btn btn-primary' %>
+  <% end %>
+</div>

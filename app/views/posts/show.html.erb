@@ -7,4 +7,25 @@
 <%= render 'shared/page_header', title: @post.title %>
 <%= @post.description %>
 <hr/>
+
+<%= form_for [@post, @comment] do |f| %>
+  <%= f.label 'New Comment' %>
+  <%= f.text_area :body, class: 'span5', rows: 5 %>
+  </br>
+  <%= f.submit 'Create Comment', class: 'btn btn-success' %>
+<% end %>
+
+<hr/>
+
+<% @comments.each do |comment| %>
+  <div class='well'>
+    <%= comment.body %>
+      </p>
+        By <span class='quiet'><%= comment.user.username %></span> on <%= display_time(comment.created_at) %>
+      </p>
+    </br>
+  </div>
+<% end %>
+
+<hr/>
 <%= link_to 'Back', posts_path %>

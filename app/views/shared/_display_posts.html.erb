@@ -1,0 +1,21 @@
+<% @posts.each do |post| %>
+  <div class='well'>
+    <%= render '/shared/categories_badge', post: post %>
+    <div class = 'pull-right'>
+      <%= link_to '[edit]', edit_post_path(post) %>
+    </div>  
+    <h4>
+      <%= link_to post.title, post_path(post) %>
+    </h4>
+    <p>
+      <%= post.description %>
+    </p>
+    By <span class='quiet'><%= post.creator.username %></span> on <%= display_time(post.created_at) %>
+    </br>
+    <h5>
+      <small>
+        <%= link_to "#{post.comments.size} comments", post_path(post) %>
+      </small>
+    </h5>
+  </div>
+<% end %>
