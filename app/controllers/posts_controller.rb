@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     @post.creator = User.first
 
     if @post.save
-      flash[:notice] = 'Post saved successfully'
+      flash[:notice] = 'Apartment saved successfully'
       redirect_to post_path(@post)
     else
       render 'new'
@@ -30,9 +30,8 @@ class PostsController < ApplicationController
   end
 
   def update
-
     if @post.update(post_params)
-      flash[:notice] = "Post updated successfully"
+      flash[:notice] = "Apartment updated successfully"
       redirect_to post_path(@post)
     else
       render 'edit'
@@ -42,7 +41,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :description)
+    params.require(:post).permit(:title, :description, category_ids: [])
   end
 
   def set_post

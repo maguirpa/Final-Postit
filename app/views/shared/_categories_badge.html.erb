@@ -1,6 +1,6 @@
 
 <% post.categories.each do |cat| %>
   <div class= 'badge'>
-    <%= cat.name %>
+    <%= link_to cat.name, category_path(cat) %>
   </div>    
 <% end %>

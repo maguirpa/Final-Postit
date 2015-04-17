@@ -1,14 +1,14 @@
 <ul class="nav">
   <li>
-    <%= link_to "Postit!", root_path, :class => 'brand' %>
+    <%= link_to "Apartment Hunt!!", root_path, :class => 'brand' %>
   </li>
 </ul>
 
-<%= link_to 'Create Post', new_post_path, class: 'btn btn-success btn-small' %>
+<%= link_to 'New Apt', new_post_path, class: 'btn btn-success btn-small' %>
 
 <div class="btn-group">
   <a class="btn dropdown-toggle btn-small btn-default" data-toggle="dropdown" href="#">
-    Create Category
+    Neighborhoods
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu">
@@ -19,7 +19,7 @@
       <li>
         <%= link_to(new_category_path) do %>
           <i class='icon-plus'></i>
-          New Category
+          New Neighorhood
         <% end %>
       </li>
     </li>

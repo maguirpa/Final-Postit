@@ -12,7 +12,7 @@
   <%= f.label 'New Comment' %>
   <%= f.text_area :body, class: 'span5', rows: 5 %>
   </br>
-  <%= f.submit 'Create Comment', class: 'btn btn-success' %>
+  <%= f.submit 'Add Comment', class: 'btn btn-success' %>
 <% end %>
 
 <hr/>
@@ -21,7 +21,7 @@
   <div class='well'>
     <%= comment.body %>
       </p>
-        By <span class='quiet'><%= comment.user.username %></span> on <%= display_time(comment.created_at) %>
+        - <span class='quiet'><%= comment.user.username %></span> on <%= display_time(comment.created_at) %>
       </p>
     </br>
   </div>
