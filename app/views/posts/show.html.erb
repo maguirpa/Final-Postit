@@ -2,10 +2,13 @@
   <%= link_to '[edit this post]', edit_post_path(@post) %>
 </div>
 
-<%= render 'shared/categories_badge', post: @post %>  
+<p><%= render 'shared/categories_badge', post: @post %>  </p>
 
 <%= render 'shared/page_header', title: @post.title %>
 <%= @post.description %>
+</p>
+  <div><%= link_to 'Link to Apartment', @post.link, :target => :blank %></div>
+</br>
 <hr/>
 
 <%= form_for [@post, @comment] do |f| %>
