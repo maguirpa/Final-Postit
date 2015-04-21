@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params.require(:comment).permit(:body))
     @post = Post.find(params[:post_id])
 
-    @comment.user = User.first
+    @comment.user = current_user
     @comment.post = @post
 
 

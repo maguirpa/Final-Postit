@@ -2,7 +2,7 @@
   <div class='well'>
     <%= render '/shared/categories_badge', post: post %>
     <div class = 'pull-right'>
-      <%= link_to '[edit]', edit_post_path(post) %>
+      <%= link_to '[edit]', edit_post_path(post) if owner?(post) %>
     </div>  
     <h4>
       <%= link_to post.title, post_path(post) %>

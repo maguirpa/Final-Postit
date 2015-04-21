@@ -2,12 +2,26 @@
   <li>
     <%= link_to "Apartment Hunt!!", root_path, :class => 'brand' %>
   </li>
+
+  <% if logged_in? %>
+    <li>
+    <%= link_to 'New Apt', new_post_path %>
+    </li>
+    <li>
+      <%= link_to "Logout", logout_path %>
+    </li>
+  <% else %>
+    <li>
+      <%= link_to "Register", register_path %>
+    </li>
+    <li>
+      <%= link_to "Login", login_path %>
+    </li>
+  <% end %>
 </ul>
 
-<%= link_to 'New Apt', new_post_path, class: 'btn btn-success btn-small' %>
-
 <div class="btn-group">
-  <a class="btn dropdown-toggle btn-small btn-default" data-toggle="dropdown" href="#">
+  <a class="btn dropdown-toggle btn-small btn-success" data-toggle="dropdown" href="#">
     Neighborhoods
     <span class="caret"></span>
   </a>
@@ -17,12 +31,20 @@
     <% end %>
     <li class='divider'>
       <li>
-        <%= link_to(new_category_path) do %>
-          <i class='icon-plus'></i>
-          New Neighorhood
+        <% if logged_in? %>
+          <%= link_to(new_category_path) do %>
+            <i class='icon-plus'></i>
+            New Neighorhood
+          <% end %>
         <% end %>
       </li>
     </li>
   </ul>
 
 </div>
+
+<% if logged_in? %>
+  <div class='pull-right'>
+    <p><%= current_user.username %></p>
+  </div>
+<% end %>
