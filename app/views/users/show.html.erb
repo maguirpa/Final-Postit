@@ -1,0 +1,21 @@
+<%= render 'shared/page_header', title: "Profile: #{@user.username}" %>
+
+<div class="well">
+  <div class='dl-horizontal'>
+    <strong>Username:</strong> <%= @user.username %> 
+  </div>
+</div>
+<p><strong><%= @user.username.capitalize %>'s Activity</strong></p>
+
+<ul class="nav nav-tabs">
+  <li class='active'><a href="#posts" data-toggle="tab">Posts (<%= @user.posts.size %>)</a></li>
+  <li><a href="#comments" data-toggle="tab">Comments (<%= @user.comments.size %>)</a></li>
+</ul>
+<div class = 'tab-content'>
+  <div class = 'tab-pane active' id= 'posts'>
+    <%= render '/shared/display_posts'%>
+  </div>
+  <div class = 'tab-pane' id= 'comments'>
+    <%= render '/shared/display_comments', show_post: true %>
+  </div>
+</div>

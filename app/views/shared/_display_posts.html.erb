@@ -12,11 +12,11 @@
     </p>
     <div><%= link_to 'Link to Apartment', post.link, :target => :blank %></div>
     </br>
-    By <span class='quiet'><%= post.creator.username %></span> on <%= display_time(post.created_at) %>
+    By <span class='quiet'><%= link_to post.creator.username, user_path(post.creator) %></span> on <%= display_time(post.created_at) %>
     </br>
     <h5>
       <small>
-        <%= link_to "#{post.comments.size} comments", post_path(post) %>
+        <%= link_to (post.comments.size == 1 ? "1 comment" : "#{post.comments.size} comments"), post_path(post) %>
       </small>
     </h5>
   </div>

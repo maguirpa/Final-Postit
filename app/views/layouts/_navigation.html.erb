@@ -7,9 +7,6 @@
     <li>
     <%= link_to 'New Apt', new_post_path %>
     </li>
-    <li>
-      <%= link_to "Logout", logout_path %>
-    </li>
   <% else %>
     <li>
       <%= link_to "Register", register_path %>
@@ -40,11 +37,12 @@
       </li>
     </li>
   </ul>
-
 </div>
 
 <% if logged_in? %>
-  <div class='pull-right'>
-    <p><%= current_user.username %></p>
-  </div>
+  <%= render 'shared/user_dropdown_menu' %>
 <% end %>
+
+
+
+

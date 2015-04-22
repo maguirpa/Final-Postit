@@ -50,20 +50,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])    
   end
 
-  def require_user
-    if !logged_in?
-      flash[:error] = 'You have to be logged in to do that.'
-      redirect_to root_path
-    end
-  end
-
-  def require_owner
-    if !owner?(@post)
-      flash[:error] = 'You do not have access to that.'
-      redirect_to root_path
-    end
-  end
-
 end
 
 

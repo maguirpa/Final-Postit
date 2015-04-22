@@ -9,9 +9,8 @@
 </p>
   <div><%= link_to 'Link to Apartment', @post.link, :target => :blank %></div>
 </br>
-<hr/>
-
 <% if logged_in? %>
+<hr/>
   <%= form_for [@post, @comment] do |f| %>
     <%= f.label 'New Comment' %>
     <%= f.text_area :body, class: 'span5', rows: 5 %>
@@ -22,15 +21,7 @@
 
 <hr/>
 
-<% @comments.each do |comment| %>
-  <div class='well'>
-    <%= comment.body %>
-      </p>
-        - <span class='quiet'><%= comment.user.username %></span> on <%= display_time(comment.created_at) %>
-      </p>
-    </br>
-  </div>
-<% end %>
+<%= render 'shared/display_comments' %>
 
 <hr/>
 <%= link_to 'Back', posts_path %>

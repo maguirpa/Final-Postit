@@ -1,0 +1,14 @@
+<% show_post ||= false %>
+
+<% @comments.each do |comment| %>
+    <div class='well'>
+      "<i><%= comment.body %></i>" 
+      <% if show_post %>
+        <span>- on <%= link_to comment.post.title, post_path(comment.post) %></span>
+      <% end %>
+        </p>
+          - <span class='quiet'><%= link_to comment.user.username, user_path(comment.user) %></span> on <%= display_time(comment.created_at) %>
+        </p>
+        </br>
+    </div>
+  <% end %>

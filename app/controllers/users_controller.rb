@@ -1,4 +1,6 @@
 class UsersController < ApplicationController 
+  before_action :set_user, only: [:show, :edit, :update]
+  before_action :same_user, only: [:edit, :update]
 
   def new
     @user = User.new
@@ -16,10 +18,38 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @posts = @user.posts.order(created_at: :desc)
+    @comments = @user.comments.order(created_at: :desc)
+  end
+
+  def edit
+  end
+
+  def update
+    if @user.update(user_params)
+      flash[:notice] = "Profile updated successfully."
+      redirect_to user_path(@user)
+    else
+      render 'edit'
+    end
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:username, :password)
+  end
+
+  def set_user
+   @user = User.find(params[:id]) 
+  end
+
+  def same_user
+    if @user != current_user
+      flash[:error] = "You do not have access to that."
+      redirect_to root_path
+    end
   end
 
 end

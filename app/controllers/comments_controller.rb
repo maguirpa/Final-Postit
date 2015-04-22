@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :require_user 
 
   def create
     @comment = Comment.new(params.require(:comment).permit(:body))
