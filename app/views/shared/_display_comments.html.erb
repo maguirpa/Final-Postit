@@ -1,14 +1,27 @@
 <% show_post ||= false %>
 
 <% @comments.each do |comment| %>
-    <div class='well'>
-      "<i><%= comment.body %></i>" 
-      <% if show_post %>
-        <span>- on <%= link_to comment.post.title, post_path(comment.post) %></span>
-      <% end %>
-        </p>
-          - <span class='quiet'><%= link_to comment.user.username, user_path(comment.user) %></span> on <%= display_time(comment.created_at) %>
-        </p>
+    <div class='row'>
+      <div class='span0 well text-center'>
+        <%= link_to vote_post_comment_path(comment.post, comment, vote: true), method: 'post' do %>
+          <i class='icon-arrow-up'></i>
+        <% end %>
         </br>
+          <%= comment.total_votes %> votes
+        </br>
+        <%= link_to vote_post_comment_path(comment.post, comment, vote: false), method: 'post' do %>
+          <i class='icon-arrow-down'></i>
+        <% end %>
     </div>
+      <div class='span8 well'>
+          "<i><%= comment.body %></i>" 
+          <% if show_post %>
+            <span>- on <%= link_to comment.post.title, post_path(comment.post) %></span>
+          <% end %>
+            </p>
+              - <span class='quiet'><%= link_to comment.user.username, user_path(comment.user) %></span> on <%= display_time(comment.created_at) %>
+            </p>
+            </br>
+        </div>
+      </div>
   <% end %>
