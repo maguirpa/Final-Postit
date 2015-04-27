@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
   before_action :set_post, only:[:show, :edit, :update, :vote]
-  before_action :require_user, except: [:show, :index]
+  before_action :require_user, except: [:show, :index, :vote]
   before_action :require_owner, only: [:edit]
 
   def index
-    @posts = Post.all.order(created_at: :desc)
+    sort_by
   end
 
   def show

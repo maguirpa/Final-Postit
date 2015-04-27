@@ -7,6 +7,21 @@
 </div>
 <p><strong><%= @user.username.capitalize %>'s Activity</strong></p>
 
+<% if params[:tab] != 'comments' %>
+<div class="btn-group">
+  <a class="btn dropdown-toggle btn-small btn-success" data-toggle="dropdown" href="#">
+    Sort by
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><%= link_to 'Newest first', user_path(@user, mark: 'newest') %></li>
+    <li><%= link_to 'Rank', user_path(@user, mark: 'rank') %></li>
+  </ul>
+</div>
+<% end %>
+
+<hr/>
+
 <ul class="nav nav-tabs">
   <li class='<%= 'active' if params[:tab].nil? %>'>
     <%= link_to "Posts (#{@user.posts.size})", user_path(@user) %>

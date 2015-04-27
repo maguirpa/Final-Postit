@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @posts = @user.posts.order(created_at: :desc)
+    sort_by
     @comments = @user.comments.order(created_at: :desc)
   end
 

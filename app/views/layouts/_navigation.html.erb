@@ -26,9 +26,9 @@
     <% Category.all.each do |cat| %>
     <li><%= link_to cat.name, category_path(cat) %></li>
     <% end %>
+    <% if logged_in? %>
     <li class='divider'>
       <li>
-        <% if logged_in? %>
           <%= link_to(new_category_path) do %>
             <i class='icon-plus'></i>
             New Neighorhood

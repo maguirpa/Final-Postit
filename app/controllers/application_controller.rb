@@ -24,4 +24,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def sort_by
+    if params[:mark] == 'newest'
+      @posts = Post.all.order(created_at: :desc)
+    elsif params[:mark] == 'rank'
+      @posts = Post.all.sort_by{|x| x.total_votes}.reverse
+    else
+      @posts = Post.all.order(created_at: :desc)
+    end
+  end
+
 end
