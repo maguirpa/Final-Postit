@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only:[:show, :edit, :update, :vote]
   before_action :require_user, except: [:show, :index, :vote]
-  before_action :require_owner, only: [:edit]
 
   def index
     sort_by
@@ -29,6 +28,10 @@ class PostsController < ApplicationController
   end
 
   def edit    
+    if !owner?(@post)
+      flash[:error] = 'You do not have access to that'
+      redirect_to root_path
+    end
   end
 
   def update
