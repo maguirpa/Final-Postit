@@ -4,7 +4,17 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu">
-    <li><%= link_to 'Newest first', root_path(mark: 'newest') %></li>
-    <li><%= link_to 'Rank', root_path(mark: 'rank') %></li>
+    <li>
+      <%= link_to root_path(mark: 'newest') do %>
+      <i class='icon-plus'></i>
+      Newest First
+      <% end %>
+    </li>
+    <li>
+      <%= link_to root_path(mark: 'rank') do %>
+      <i class='icon-arrow-up'></i>
+      Rank
+      <% end %>
+    </li>
   </ul>
 </div>
