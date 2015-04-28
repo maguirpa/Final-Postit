@@ -1,6 +1,16 @@
-<div class = 'pull-right'>
-  <%= link_to '[edit this post]', edit_post_path(@post) if owner?(@post) %>
-</div>
+<% if owner?(@post) %>
+  <div class = 'pull-right'>
+    <%= link_to @post, method: 'delete', data: {confirm: "Are you sure?"} do %>
+      <i class='icon-trash'></i>
+      Delete
+    <% end %>
+    </br>
+      <%= link_to edit_post_path(@post) do %>
+      <i class='icon-edit'></i>
+      Edit
+    <% end %>
+  </div>
+<% end %>
 
 <p><%= render 'shared/categories_badge', post: @post %>  </p>
 

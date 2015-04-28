@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only:[:show, :edit, :update, :vote]
+  before_action :set_post, only:[:show, :edit, :update, :vote, :destroy]
   before_action :require_user, except: [:show, :index, :vote]
 
   def index
@@ -40,6 +40,17 @@ class PostsController < ApplicationController
       redirect_to post_path(@post)
     else
       render 'edit'
+    end
+  end
+
+  def destroy
+    if @post.creator == current_user
+      @post.destroy
+      flash[:notice] = 'Apartment deleted successfully'
+      redirect_to root_path
+    else
+      flash[:error] = "You can't perform that action"
+      redirect_to root_path
     end
   end
 
