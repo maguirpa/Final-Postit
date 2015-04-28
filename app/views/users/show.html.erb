@@ -8,26 +8,26 @@
 <p><strong><%= @user.username.capitalize %>'s Activity</strong></p>
 
 <% if params[:tab] != 'comments' %>
-<div class="btn-group">
-  <a class="btn dropdown-toggle btn-small btn-success" data-toggle="dropdown" href="#">
-    Sort by
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu">
-    <li>
-      <%= link_to user_path(@user, mark: 'newest') do %>
-      <i class='icon-plus'></i>
-      Newest first
-      <% end %>
-    </li>
-    <li>
-      <%= link_to user_path(@user, mark: 'rank') do %>
-      <i class='icon-arrow-up'></i>
-      Rank
-      <% end %>
-    </li>
-  </ul>
-</div>
+  <div class="btn-group">
+    <a class="btn dropdown-toggle btn-small btn-success" data-toggle="dropdown" href="#">
+      Sort by
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <%= link_to user_path(@user, mark: 'newest') do %>
+        <i class='icon-plus'></i>
+        Newest first
+        <% end %>
+      </li>
+      <li>
+        <%= link_to user_path(@user, mark: 'rank') do %>
+        <i class='icon-arrow-up'></i>
+        Rank
+        <% end %>
+      </li>
+    </ul>
+  </div>
 <% end %>
 
 <hr/>
