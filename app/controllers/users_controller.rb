@@ -19,7 +19,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    sort_by
+    if params[:mark] == 'newest'
+      @posts = @user.posts.order(created_at: :desc)
+    elsif params[:mark] == 'rank'
+      @posts = @user.posts.sort_by{|x| x.total_votes}.reverse
+    else
+      @posts = @user.posts.order(created_at: :desc)
+    end
     @comments = @user.comments.order(created_at: :desc)
   end
 

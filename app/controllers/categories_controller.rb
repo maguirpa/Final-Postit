@@ -18,7 +18,13 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    sort_by
+    if params[:mark] == 'newest'
+      @posts = @category.posts.order(created_at: :desc)
+    elsif params[:mark] == 'rank'
+      @posts = @category.posts.sort_by{|x| x.total_votes}.reverse
+    else
+      @posts = @category.posts.order(created_at: :desc)
+    end
   end
 
 end
