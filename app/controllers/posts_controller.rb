@@ -62,7 +62,12 @@ class PostsController < ApplicationController
 
   def vote
     Vote.create(voteable: @post, user: current_user, vote: params[:vote])
-    redirect_to :back
+
+    respond_to do |format|
+      format.html {redirect_to :back}
+      format.js
+    end
+
   end
 
   private
