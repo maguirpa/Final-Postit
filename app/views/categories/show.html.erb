@@ -2,7 +2,26 @@
 
 <%= render 'shared/page_header', title: "#{all_posts} - #{@category.name}".html_safe %>
 
-<%= render 'shared/sort_by' %>
+<div class="btn-group">
+  <a class="btn dropdown-toggle btn-small btn-success" data-toggle="dropdown" href="#">
+    Sort by
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li>
+      <%= link_to category_path(@category, mark: 'newest') do %>
+      <i class='icon-plus'></i>
+      Newest First
+      <% end %>
+    </li>
+    <li>
+      <%= link_to category_path(@category, mark: 'rank') do %>
+      <i class='icon-arrow-up'></i>
+      Rank
+      <% end %>
+    </li>
+  </ul>
+</div>
 
 <hr/>
 
