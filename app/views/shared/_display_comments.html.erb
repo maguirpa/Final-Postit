@@ -3,14 +3,12 @@
 <% @comments.each do |comment| %>
     <div class='row'>
       <div class='span0 well text-center'>
-        <%= link_to vote_post_comment_path(comment.post, comment, vote: true), method: 'post' do %>
-          <i class='icon-arrow-up'></i>
+        <%= link_to vote_post_comment_path(comment.post, comment, vote: true), class: 'icon-arrow-up', method: 'post', remote: true do %>
         <% end %>
         </br>
-          <%= comment.total_votes %> votes
+          <span id= 'comment_<%= comment.id %>_votes'><%= comment.total_votes %> votes</span>
         </br>
-        <%= link_to vote_post_comment_path(comment.post, comment, vote: false), method: 'post' do %>
-          <i class='icon-arrow-down'></i>
+        <%= link_to vote_post_comment_path(comment.post, comment, vote: false), class: 'icon-arrow-down', method: 'post', remote: true do %>
         <% end %>
     </div>
       <div class='span8 well'>

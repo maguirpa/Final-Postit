@@ -24,7 +24,7 @@
     <p>
       <%= post.description %>
     </p>
-    <div><%= link_to 'Link to Apartment', post.link, :target => :blank %></div>
+    <div><%= link_to 'Link to Apartment', post.link, target: :blank %></div>
     </br>
     By <span class='quiet'><%= link_to post.creator.username, user_path(post.creator) %></span> on <%= display_time(post.created_at) %>
     </br>
