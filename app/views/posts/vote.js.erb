@@ -1,1 +1,6 @@
-$("#post_<%= @post.slug %>_votes").html("<%= @post.total_votes %> votes");
+<% if @vote.user.votes.where(voteable: @post).size < 5 %>
+  <% @vote. save %>
+  $("#post_<%= @post.slug %>_votes").html("<%= @post.total_votes %> votes");
+<% else %>
+  alert("You have a maximum of 5 votes. Sorry.")
+<% end %>
