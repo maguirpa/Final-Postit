@@ -1,1 +1,7 @@
-$("#post_<%= @post.slug %>_votes").html("<%= @post.total_votes %> votes");
+<% if @vote.user.votes.where(voteable: @post).size < 5 %>
+    <% @vote.save %>
+    $("#post_<%= @post.slug %>_votes").html("<%= @post.total_votes %> votes");
+<% else %>
+      alert("You can only vote on a post 5 times.")
+<% end %>
+
