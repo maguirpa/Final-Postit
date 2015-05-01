@@ -17,7 +17,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find(params[:id])
+    @category = Category.find_by(slug: params[:id])
     if params[:mark] == 'newest'
       @posts = @category.posts.order(created_at: :desc)
     elsif params[:mark] == 'rank'

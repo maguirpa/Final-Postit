@@ -6,6 +6,7 @@ class Post < ActiveRecord::Base
   has_many :votes, as: :voteable, dependent: :destroy
 
   validates :link, presence: true
+  validates :title, presence: true, uniqueness: true
 
   after_validation :generate_slug
 
@@ -22,7 +23,11 @@ class Post < ActiveRecord::Base
   end
 
   def generate_slug
-    self.slug = self.title.gsub(" ", "-").downcase
+    str = self.title
+    str = str.strip
+    str.gsub! /\s*[^A-Za-z0-9]\s*/, '-'
+    str.gsub! /-+/, '-'
+    self.slug = str.downcase
   end
 
   def to_param
