@@ -61,7 +61,7 @@ class PostsController < ApplicationController
   end
 
   def vote
-    @vote = Vote.new(voteable: @post, user: current_user, vote: params[:vote])
+    @vote = Vote.create(voteable: @post, user: current_user, vote: params[:vote])
 
     respond_to do |format|
       format.html {redirect_to :back}
